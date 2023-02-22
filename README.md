@@ -7,3 +7,5 @@ Infosys 1D
 4) use default device (pixel 2)
 5) choose tiramisu (not tiramisuprivacy)
 6) Click run
+
+At the top of android studio, select Git (Near Help) to make pulls/commits
