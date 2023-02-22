@@ -1,4 +1,4 @@
-package com.example.authapp;
+package DataClasses;
 
 public class User {
     public String fullName, age, email;

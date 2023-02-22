@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-import java.util.regex.Pattern;
+import DataClasses.User;
 
 public class RegisterUser extends AppCompatActivity implements View.OnClickListener {
 
