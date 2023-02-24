@@ -1,16 +1,39 @@
 package DataClasses;
+import java.util.ArrayList;
+
+//User class for storing user data
 
 public class User {
-    public String fullName, age, email;
-
+    public String username, email;
+    public ArrayList<AbstractGame> games;
+    public GameSchedule gameschedule;
     public User(){
-
     }
 
-    public User(String fullName, String age, String email){
-        this.fullName = fullName;
-        this.age = age;
+    public User(String username, String email){
+        this.username = username;
         this.email = email;
-
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void add_game(AbstractGame game) {
+        this.games.add(game);
+    }
+
+
 }

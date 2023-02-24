@@ -25,7 +25,7 @@ import DataClasses.User;
 public class RegisterUser extends AppCompatActivity implements View.OnClickListener {
 
     private TextView banner, registerUser;
-    private EditText editTextFullName, editTextAge, editTextEmail, editTextPassword;
+    private EditText editTextFullName, editTextEmail, editTextPassword;
     private ProgressBar progressBar;
 
     private FirebaseAuth mAuth;
@@ -44,7 +44,6 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         registerUser.setOnClickListener(this);
 
         editTextFullName = (EditText) findViewById(R.id.fullName);
-        editTextAge = (EditText) findViewById(R.id.age);
         editTextEmail = (EditText) findViewById(R.id.email);
         editTextPassword = (EditText) findViewById(R.id.password);
 
@@ -70,17 +69,10 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
         String fullName = editTextFullName.getText().toString().trim();
-        String age = editTextAge.getText().toString().trim();
 
         if(fullName.isEmpty()){
             editTextFullName.setError("Full name is required!");
             editTextFullName.requestFocus();
-            return;
-        }
-
-        if(age.isEmpty()){
-            editTextAge.setError("Age is required!");
-            editTextAge.requestFocus();
             return;
         }
 
@@ -109,7 +101,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            User user = new User(fullName, age, email);
+                            User user = new User(fullName, email);
                             //IMPORTANT: MUST include database url in FirebaseDatabase.getInstance()!
                             FirebaseDatabase.getInstance("https://auth-b4a12-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
