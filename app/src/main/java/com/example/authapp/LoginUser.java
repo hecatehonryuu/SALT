@@ -1,5 +1,9 @@
 package com.example.authapp;
 
+import DataClasses.GameObject;
+import Utils.Remove;
+import Utils.Update;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +23,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginUser extends AppCompatActivity implements View.OnClickListener{
     private TextView banner, forgetPassword;
@@ -28,6 +33,7 @@ public class LoginUser extends AppCompatActivity implements View.OnClickListener
 
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
+    private FirebaseDatabase mDatabase;
     private Configuration configuration;
 
 
@@ -51,6 +57,7 @@ public class LoginUser extends AppCompatActivity implements View.OnClickListener
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance("https://auth-b4a12-default-rtdb.asia-southeast1.firebasedatabase.app/");
 
 
     }
@@ -118,6 +125,7 @@ public class LoginUser extends AppCompatActivity implements View.OnClickListener
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     //redirect to user profile
+                    Remove.RemoveUserMatched(mDatabase, mAuth, "-NQW9j65ER2as_x9kXsR");
                     startActivity(new Intent(LoginUser.this, HomePage.class));
                     progressBar.setVisibility(View.GONE);
                 }

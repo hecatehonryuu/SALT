@@ -1,4 +1,6 @@
 package DataClasses;
+import androidx.annotation.NonNull;
+
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +19,18 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        String s1 = "Username: " + this.username + "\n";;
+        String s2 = "Games: " + this.games.keySet().toString() + "\n";;
+        String s3 = (this.bio == "") ?  "" : "Bio:" + this.bio + "\n";
+        String s4 = "No. of friends: " + this.friends.size();
+        String s5 = "No. of pending: " + this.pending.size();
+        String s6 = "No. of matched: " + this.matched.size();
+        return s1 + s2 + s3 + s4 + s5 + s6;
     }
 
     //Getters

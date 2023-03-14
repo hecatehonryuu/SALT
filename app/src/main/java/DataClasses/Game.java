@@ -1,5 +1,7 @@
 package DataClasses;
 
+import androidx.annotation.NonNull;
+
 import java.util.Map;
 
 //For each game template added, initiate one of these, serves to track all players of a game
@@ -15,6 +17,14 @@ public class Game {
 
     public Game(String gamename) {
         this.gamename = gamename;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        String s1 = "Game: " + this.gamename + "\n";
+        String s2 = "No. of players: " + players.size();
+        return s1 + s2;
     }
 
     public String getGamename() {

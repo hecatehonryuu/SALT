@@ -6,6 +6,8 @@ package DataClasses;
 //Game name cannot be updated, everything else can
 //No methods, only getters (Setting done by firebase update functions)
 
+import androidx.annotation.NonNull;
+
 public class GameObject {
     private String gamename, ign, rank, region, comment;
 
@@ -15,6 +17,17 @@ public class GameObject {
     public GameObject(String gamename, String ign) {
         this.gamename = gamename;
         this.ign = ign;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        String s1 = "Game: " + this.gamename + "\n";
+        String s2 = "IGN: " + this.ign + "\n";
+        String s3 = (this.rank == "") ?  "" : "Rank:" + this.rank + "\n";
+        String s4 = (this.region == "") ?  "" : "Region:" + this.region + "\n";
+        String s5 = (this.comment == "") ?  "" : "Comment:" + this.comment + "\n";
+        return s1 + s2 + s3 + s4 + s5;
     }
 
     //Getters

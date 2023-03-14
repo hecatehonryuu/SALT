@@ -1,5 +1,7 @@
 package DataClasses;
 
+import androidx.annotation.NonNull;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -36,6 +38,19 @@ public class GameTemplate {
         List<String> avail_roles = Arrays.asList("Controller", "Duelist", "Sentinel", "Initiator");
         List<String> avail_regions = Arrays.asList("Brazil", "Europe", "Korea", "Latin America", "North America", "SEA/AsiaPacific");
         return new GameTemplate(gamename, has_rank, has_role, has_region, avail_ranks, avail_roles, avail_regions);
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        String s1 = "Game: " + this.gamename + "\n";
+        String s2 = (this.has_rank) ? "has_rank = true\n" : "has_rank = false\n";
+        String s3 = (this.has_rank) ? "Ranks: " + this.avail_ranks.toString() : "";
+        String s4 = (this.has_role) ? "has_role = true\n" : "has_role = false\n";
+        String s5 = (this.has_role) ? "Roles: " + this.avail_roles.toString() : "";
+        String s6 = (this.has_region) ? "has_region = true\n" : "has_region = false\n";
+        String s7 = (this.has_region) ? "Regions: " + this.avail_regions.toString() : "";
+        return s1 + s2 + s3 + s4 + s5 + s6 + s7;
     }
 
     //Getters
