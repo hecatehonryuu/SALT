@@ -15,8 +15,11 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.database.FirebaseDatabase;
 
 
@@ -25,15 +28,15 @@ import DataClasses.User;
 public class RegisterUser extends AppCompatActivity implements View.OnClickListener {
 
     private TextView banner, registerUser;
-    private EditText editTextFullName, editTextEmail, editTextPassword;
+    private EditText editTextUserName, editTextEmail;
+    private TextInputEditText editTextPassword;
     private ProgressBar progressBar;
-
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_user);
+        setContentView(R.layout.activity_register);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -43,9 +46,9 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         registerUser = (Button) findViewById(R.id.registerUser);
         registerUser.setOnClickListener(this);
 
-        editTextFullName = (EditText) findViewById(R.id.fullName);
+        editTextUserName = (EditText) findViewById(R.id.userName);
         editTextEmail = (EditText) findViewById(R.id.email);
-        editTextPassword = (EditText) findViewById(R.id.password);
+        editTextPassword = (TextInputEditText) findViewById(R.id.password);
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
@@ -68,11 +71,11 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 //        trim removes whitespaces from both ends of a string
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
-        String username = editTextFullName.getText().toString().trim();
+        String userName = editTextUserName.getText().toString().trim();
 
-        if(username.isEmpty()){
-            editTextFullName.setError("Full name is required!");
-            editTextFullName.requestFocus();
+        if(userName.isEmpty()){
+            editTextUserName.setError("Username is required!");
+            editTextUserName.requestFocus();
             return;
         }
 
@@ -101,7 +104,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            User user = new User(username, email);
+                            User user = new User(userName, email, password);
                             //IMPORTANT: MUST include database url in FirebaseDatabase.getInstance()!
                             FirebaseDatabase.getInstance("https://auth-b4a12-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -110,20 +113,23 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if(task.isSuccessful()){
                                                 Toast.makeText(RegisterUser.this, "User has been registered successfully!", Toast.LENGTH_LONG).show();
-                                                progressBar.setVisibility(View.GONE);
-                                            }
-                                            else{
-                                                Toast.makeText(RegisterUser.this, "Failed to register! Try Again!", Toast.LENGTH_LONG).show();
+                                                startActivity(new Intent(RegisterUser.this, RegisterUserPreference.class));
                                                 progressBar.setVisibility(View.GONE);
                                             }
                                         }
                                     });
-
-
                         }
                         else{
-                            Toast.makeText(RegisterUser.this, "Failed to register! Try again!", Toast.LENGTH_LONG).show();
-                            progressBar.setVisibility(View.GONE);
+                            try{
+                                throw task.getException();
+                            }catch (FirebaseAuthUserCollisionException  e) {
+                                //Error if email already exist
+                                Toast.makeText(RegisterUser.this, "Email already exist! Try Again!", Toast.LENGTH_LONG).show();
+                                progressBar.setVisibility(View.GONE);
+                            }catch (Exception e){
+                                Toast.makeText(RegisterUser.this, "Failed to register! Try again!", Toast.LENGTH_LONG).show();
+                                progressBar.setVisibility(View.GONE);
+                            }
                         }
                     }
                 });
