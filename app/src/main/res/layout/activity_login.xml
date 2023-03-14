@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:configChanges="uiMode"
     tools:context=".LoginUser">
+
 
 
     <TextView
@@ -24,7 +26,7 @@
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="380dp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:textSize="24sp"
@@ -32,14 +34,14 @@
         android:hint="Email Address"
         android:inputType="textEmailAddress"
         android:background="@drawable/edittext_border"
+        android:textColorHint="@color/colorOnPrimary"
         app:layout_constraintTop_toBottomOf="@+id/banner"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        />
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordLayout"
-        android:layout_width="380dp"
+        android:layout_width="320dp"
         android:layout_height="52dp"
         android:layout_marginTop="15dp"
 
@@ -70,8 +72,8 @@
 
     <Button
         android:id="@+id/login"
-        android:layout_width="380dp"
-        android:layout_height="70dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_marginTop="34dp"
         android:backgroundTint="#3399ff"
         android:text="Login"
@@ -79,6 +81,10 @@
         android:textSize="26sp"
         android:textStyle="bold"
         android:background="@drawable/rounded_corner"
+        app:autoSizeMaxTextSize="100sp"
+        app:autoSizeMinTextSize="20sp"
+        app:autoSizeStepGranularity="2sp"
+        app:autoSizeTextType="uniform"
         app:layout_constraintTop_toBottomOf="@+id/passwordLayout"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

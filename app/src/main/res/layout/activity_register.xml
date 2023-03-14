@@ -23,7 +23,7 @@
 
     <EditText
         android:id="@+id/userName"
-        android:layout_width="380dp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:textSize="24sp"
@@ -38,7 +38,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordLayout"
-        android:layout_width="380dp"
+        android:layout_width="320dp"
         android:layout_height="52dp"
         android:layout_marginTop="15dp"
 
@@ -70,7 +70,7 @@
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="380dp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:ems="10"
@@ -84,8 +84,8 @@
 
     <Button
         android:id="@+id/registerUser"
-        android:layout_width="380dp"
-        android:layout_height="70dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_marginTop="34dp"
         android:backgroundTint="#3399ff"
         android:text="next"
