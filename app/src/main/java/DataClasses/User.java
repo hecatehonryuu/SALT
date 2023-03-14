@@ -4,15 +4,16 @@ import java.util.ArrayList;
 //User class for storing user data
 
 public class User {
-    public String username, email;
+    public String username, email, password;
     public ArrayList<AbstractGame> games;
     public GameSchedule gameschedule;
     public User(){
     }
 
-    public User(String username, String email){
+    public User(String username, String email, String password){
         this.username = username;
         this.email = email;
+        this.password = password;
     }
 
     public String getUsername() {
