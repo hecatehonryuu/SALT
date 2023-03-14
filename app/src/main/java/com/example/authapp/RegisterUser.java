@@ -68,9 +68,9 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 //        trim removes whitespaces from both ends of a string
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
-        String fullName = editTextFullName.getText().toString().trim();
+        String username = editTextFullName.getText().toString().trim();
 
-        if(fullName.isEmpty()){
+        if(username.isEmpty()){
             editTextFullName.setError("Full name is required!");
             editTextFullName.requestFocus();
             return;
@@ -101,7 +101,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            User user = new User(fullName, email);
+                            User user = new User(username, email);
                             //IMPORTANT: MUST include database url in FirebaseDatabase.getInstance()!
                             FirebaseDatabase.getInstance("https://auth-b4a12-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())

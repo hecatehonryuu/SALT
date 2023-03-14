@@ -1,39 +1,51 @@
 package DataClasses;
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 //User class for storing user data
 
 public class User {
-    public String username, email;
-    public ArrayList<AbstractGame> games;
-    public GameSchedule gameschedule;
-    public User(){
+    private String username, email, bio;
+    private Map<String, GameObject> games;
+    private Map<String, String> friends;
+    private List<String> pending, matched;
+
+    public User() {
     }
 
-    public User(String username, String email){
+    public User(String username, String email) {
         this.username = username;
         this.email = email;
     }
 
+    //Getters
+
     public String getUsername() {
         return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getBio() {
+        return bio;
     }
 
-    public void add_game(AbstractGame game) {
-        this.games.add(game);
+    public Map<String, GameObject> getGames() {
+        return games;
     }
 
+    public Map<String, String> getFriends() {
+        return friends;
+    }
 
+    public List<String> getPending() {
+        return pending;
+    }
+
+    public List<String> getMatched() {
+        return matched;
+    }
 }
+
