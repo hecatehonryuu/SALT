@@ -29,6 +29,10 @@ public class User {
         return email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public String getBio() {
         return bio;
     }

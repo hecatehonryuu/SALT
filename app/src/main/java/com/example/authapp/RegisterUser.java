@@ -1,5 +1,7 @@
 package com.example.authapp;
 
+import Utils.Create;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,7 +22,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-//import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 import DataClasses.User;
@@ -32,6 +34,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
     private TextInputEditText editTextPassword;
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
+    private FirebaseDatabase mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_register);
 
         mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance("https://auth-b4a12-default-rtdb.asia-southeast1.firebasedatabase.app/");
 
         banner = (TextView) findViewById(R.id.banner);
         banner.setOnClickListener(this);
@@ -104,6 +108,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            Create.RegisterNewUser(mDatabase, mAuth, userName, email, password);
                             Toast.makeText(RegisterUser.this, "User has been registered successfully!", Toast.LENGTH_LONG).show();
                             startActivity(new Intent(RegisterUser.this, RegisterUserPreference.class));
                             progressBar.setVisibility(View.GONE);
