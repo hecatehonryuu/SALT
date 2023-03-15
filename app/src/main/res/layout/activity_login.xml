@@ -8,7 +8,6 @@
     tools:context=".LoginUser">
 
 
-
     <TextView
         android:id="@+id/banner"
         android:layout_width="match_parent"

@@ -1,14 +1,10 @@
 package com.example.authapp;
 
-import DataClasses.GameObject;
-import Utils.Remove;
-import Utils.Update;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -23,7 +19,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginUser extends AppCompatActivity implements View.OnClickListener{
     private TextView banner, forgetPassword;
@@ -33,8 +28,6 @@ public class LoginUser extends AppCompatActivity implements View.OnClickListener
 
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
-    private FirebaseDatabase mDatabase;
-    private Configuration configuration;
 
 
     @Override
@@ -57,9 +50,13 @@ public class LoginUser extends AppCompatActivity implements View.OnClickListener
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         mAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance("https://auth-b4a12-default-rtdb.asia-southeast1.firebasedatabase.app/");
 
 
+    }
+
+    @Override
+    public Resources getResources() {
+        return super.getResources();
     }
 
     @Override
@@ -74,21 +71,6 @@ public class LoginUser extends AppCompatActivity implements View.OnClickListener
         }
     }
 
-    public void onConfigurationChanged (Configuration newConfig) {
-
-        super.onConfigurationChanged(newConfig);
-
-        int currentNightMode = configuration.uiMode & Configuration.UI_MODE_NIGHT_MASK;
-        switch (currentNightMode) {
-            case Configuration.UI_MODE_NIGHT_NO:
-                // Night mode is not active, we're using the light theme
-
-                break;
-            case Configuration.UI_MODE_NIGHT_YES:
-                // Night mode is active, we're using dark theme
-                break;
-        }
-    }
 
     private void userLogin(){
         String email = editTextEmail.getText().toString().trim();
