@@ -125,7 +125,6 @@ public class LoginUser extends AppCompatActivity implements View.OnClickListener
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     //redirect to user profile
-                    Remove.RemoveUserMatched(mDatabase, mAuth, "-NQW9j65ER2as_x9kXsR");
                     startActivity(new Intent(LoginUser.this, HomePage.class));
                     progressBar.setVisibility(View.GONE);
                 }

@@ -9,7 +9,7 @@ package DataClasses;
 import androidx.annotation.NonNull;
 
 public class GameObject {
-    private String gamename, ign, rank, region, comment;
+    private String gamename, ign, rank, role, region, comment;
 
     public GameObject() {
     }
@@ -25,9 +25,10 @@ public class GameObject {
         String s1 = "Game: " + this.gamename + "\n";
         String s2 = "IGN: " + this.ign + "\n";
         String s3 = (this.rank == "") ?  "" : "Rank:" + this.rank + "\n";
-        String s4 = (this.region == "") ?  "" : "Region:" + this.region + "\n";
-        String s5 = (this.comment == "") ?  "" : "Comment:" + this.comment + "\n";
-        return s1 + s2 + s3 + s4 + s5;
+        String s4 = (this.role == "") ?  "" : "Role:" + this.role + "\n";
+        String s5 = (this.region == "") ?  "" : "Region:" + this.region + "\n";
+        String s6 = (this.comment == "") ?  "" : "Comment:" + this.comment + "\n";
+        return s1 + s2 + s3 + s4 + s5 + s6;
     }
 
     //Getters
@@ -41,6 +42,10 @@ public class GameObject {
 
     public String getRank() {
         return rank;
+    }
+
+    public String getRole() {
+        return role;
     }
 
     public String getRegion() {
