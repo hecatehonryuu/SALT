@@ -1,10 +1,13 @@
 package com.example.authapp;
 
+import DataClasses.GameObject;
+import Utils.Remove;
+import Utils.Update;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -19,6 +22,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginUser extends AppCompatActivity implements View.OnClickListener{
     private TextView banner, forgetPassword;
@@ -28,6 +32,8 @@ public class LoginUser extends AppCompatActivity implements View.OnClickListener
 
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
+    private FirebaseDatabase mDatabase;
+
 
 
     @Override
@@ -50,13 +56,9 @@ public class LoginUser extends AppCompatActivity implements View.OnClickListener
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance("https://auth-b4a12-default-rtdb.asia-southeast1.firebasedatabase.app/");
 
 
-    }
-
-    @Override
-    public Resources getResources() {
-        return super.getResources();
     }
 
     @Override
