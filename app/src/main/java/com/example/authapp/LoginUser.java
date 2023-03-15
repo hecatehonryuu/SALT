@@ -1,10 +1,13 @@
 package com.example.authapp;
 
+import DataClasses.GameObject;
+import Utils.Remove;
+import Utils.Update;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -31,6 +34,8 @@ public class LoginUser extends AppCompatActivity implements View.OnClickListener
 
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
+    private FirebaseDatabase mDatabase;
+
 
     private FirebaseDatabase mDatabase;
 
@@ -58,11 +63,6 @@ public class LoginUser extends AppCompatActivity implements View.OnClickListener
         mDatabase = FirebaseDatabase.getInstance("https://auth-b4a12-default-rtdb.asia-southeast1.firebasedatabase.app/");
 
 
-    }
-
-    @Override
-    public Resources getResources() {
-        return super.getResources();
     }
 
     @Override
