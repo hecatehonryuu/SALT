@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 
 public class GameObject {
     private String gamename, ign, rank, role, region, comment;
-
+    //TODO change role to map
     public GameObject() {
     }
 

@@ -135,7 +135,7 @@ public class Update {
         childUpdates.put("/players/" + Uid, game);
 
         ref.updateChildren(childUpdates);
-        Log.i(logcattag, "added " +Uid + "to "+ gamename + " players");
+        Log.i(logcattag, "added " +Uid + " to "+ gamename + " players");
     }
 
     //GameObject
