@@ -80,7 +80,6 @@ public class Update {
         Log.i(logcattag, "added " +gamename + "to "+ Uid + " games");
     }
 
-    //TODO test
     //Adds friend, key= friend username, value = friend uid
     //Requires fetching required info to feed in, no fetching in func to avoid unnecessary fetches
     public static void UpdateUserFriends (FirebaseDatabase mDatabase, FirebaseAuth mAuth, String selfusername, String otherid, String otherusername) {
@@ -92,7 +91,7 @@ public class Update {
         childUpdates.put("/" + otherid + "/friends/" + selfusername, selfid);
 
         ref.updateChildren(childUpdates);
-        Log.i(logcattag, "added " + otherusername + " to " + selfusername + "'s friend list");
+        Log.i(logcattag, "added " + otherusername + " to " + selfusername + "'s friend list\n" + "added " + selfusername + " to " + otherusername + "'s friend list");
     }
 
     //Adds current user's userid to target user's pending list

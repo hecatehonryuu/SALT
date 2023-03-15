@@ -19,6 +19,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+
+import Utils.Update;
 
 public class LoginUser extends AppCompatActivity implements View.OnClickListener{
     private TextView banner, forgetPassword;
@@ -28,6 +31,8 @@ public class LoginUser extends AppCompatActivity implements View.OnClickListener
 
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
+
+    private FirebaseDatabase mDatabase;
 
 
     @Override
@@ -50,6 +55,7 @@ public class LoginUser extends AppCompatActivity implements View.OnClickListener
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance("https://auth-b4a12-default-rtdb.asia-southeast1.firebasedatabase.app/");
 
 
     }
