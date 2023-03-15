@@ -16,7 +16,7 @@
         android:fontFamily="monospace"
         android:text="SALT"
         android:textAlignment="center"
-        android:textSize="60sp"
+        android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
