@@ -36,10 +36,6 @@ public class LoginUser extends AppCompatActivity implements View.OnClickListener
     private FirebaseAuth mAuth;
     private FirebaseDatabase mDatabase;
 
-
-    private FirebaseDatabase mDatabase;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
